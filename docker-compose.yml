@@ -1,0 +1,21 @@
+version: '3.1'
+
+services: 
+  pyflask:
+    container_name: pydash-web
+    build: 
+      context: ./web
+      args:
+        USER_NAME: www-data
+        USER_UID: 1000
+        USER_GID: 1000
+    ports:
+      - 8083:80
+      - 8086:8080
+    environment:
+      TZ: Asia/Tokyo
+      PIPENV_VENV_IN_PROJECT: 1
+    volumes: 
+      - ./volume:/var/www
+    working_dir: /var/www
+  

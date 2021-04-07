@@ -3,7 +3,7 @@ import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output
 from app import app
-from src import maps, graph, selector, menu
+from src import maps, graph, graph_avocado, selector, menu
 
 external_stylesheets = ['/static/bulma.min.css']
 app = dash.Dash(__name__,
@@ -16,19 +16,6 @@ app.layout = html.Div([
     html.Div(id='page-content')
 ])
 
-# index_layout = html.Div([
-#     # represents the URL bar, doesn't render anything
-#     dcc.Location(id='url', refresh=False),
-
-#     dcc.Link('Navigate to "/"', href='/'),
-#     html.Br(),
-#     dcc.Link('Navigate to "/maps"', href='/maps'),
-
-#     # content will be rendered in this element
-#     html.Div(id='page-content')
-# ])
-
-
 @ app.callback(Output("page-content", "children"), Input("url", "pathname"))
 def display_page(pathname):
     if pathname == '/':
@@ -38,6 +25,8 @@ def display_page(pathname):
         return selector.layout
     elif pathname == '/graph':
         return graph.layout
+    elif pathname == '/graph/avocado':
+        return graph_avocado.layout
 
     return maps.layout
 

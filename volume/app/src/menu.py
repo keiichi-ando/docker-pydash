@@ -16,6 +16,9 @@ def get_menu():
                     html.A(' Map ', href="/maps", className="navbar-item"),
                     html.A(' Graph ', href="/graph",
                            className="navbar-item"),
+                    html.A(' Graph (Avocado) ', href="/graph/avocado",
+                           className="navbar-item"),
+
                 ], className="navbar-start")
             ], id="navbarBasic", className="navbar-menu")
 
